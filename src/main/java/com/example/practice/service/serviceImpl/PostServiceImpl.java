@@ -35,9 +35,10 @@ public class PostServiceImpl implements PostService {
         post.setTitle(postRequest.getTitle());
         post.setLocalDateTime(LocalDateTime.now());
         post.setImage(postRequest.getImage());
+        post.setUser(user);
         user.addPost(post);
-        userRepository.save(user);
         postRepository.save(post);
+
         return new SimpleResponse(HttpStatus.OK, "Post with id: "+post.getId()+" successfully saved! ");
 
 

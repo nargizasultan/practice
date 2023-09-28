@@ -1,5 +1,6 @@
 package com.example.practice.enity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,9 @@ public class Post {
     private String image;
     private String text;
     private String title;
+    @JsonFormat(pattern = "dd:MM:yy HH:mm")
     private LocalDateTime localDateTime;
+    @ManyToOne
+    private User user;
 
 }

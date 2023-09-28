@@ -31,8 +31,8 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @OneToMany(cascade = {CascadeType.DETACH,  CascadeType.MERGE})
-    private List<Post>posts=new ArrayList<>();
+    @OneToMany(cascade = {CascadeType.DETACH,  CascadeType.MERGE}, mappedBy = "user")
+    private List<Post>posts;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(
             name = "user_follows",
@@ -44,6 +44,7 @@ public class User implements UserDetails {
     private List<User> followers;
     @ManyToMany(cascade = {CascadeType.DETACH,  CascadeType.MERGE})
     private List<User> friends;
+
 
 
     @Override
